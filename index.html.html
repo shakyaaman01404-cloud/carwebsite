@@ -1,0 +1,1432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Aman Car Washing - Jamai Road, Malikpur Tiraha. Bike ₹50, Car ₹100, Tractor ₹150. Book on WhatsApp +91 9012479411." />
+  <meta name="keywords" content="Aman Car Washing, Malikpur Tiraha, Jamai Road, car wash, bike wash, tractor wash, detailing" />
+  <meta name="theme-color" content="#05070f" />
+  <title>Aman Car Washing | Malikpur Tiraha</title>
+
+  <style>
+    :root{
+      --bg:#040610;
+      --bg2:#070a16;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.14);
+      --stroke2: rgba(255,255,255,.22);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --accent:#22b7ff;
+      --accent2:#7c4dff;
+      --good:#32ffb7;
+      --shadow: 0 28px 80px rgba(0,0,0,.58);
+      --r: 18px;
+      --r2: 28px;
+      --max: 1140px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 10% 10%, rgba(34,183,255,.18), transparent 60%),
+        radial-gradient(980px 560px at 90% 15%, rgba(124,77,255,.16), transparent 60%),
+        radial-gradient(900px 520px at 50% 90%, rgba(50,255,183,.08), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
+    .grid{display:grid; gap:16px}
+
+    /* ===== PROGRESS BAR ===== */
+    .progress{
+      position:fixed; left:0; top:0; height:3px; width:0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 9999;
+      box-shadow: 0 0 26px rgba(34,183,255,.38);
+    }
+
+    /* ===== GLASS BUTTONS (transparent) ===== */
+    .btn{
+      position:relative;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color:var(--text);
+      cursor:pointer;
+      user-select:none;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+      overflow:hidden;
+      font-weight:750;
+      letter-spacing:.2px;
+      box-shadow: 0 10px 32px rgba(0,0,0,.30), 0 0 22px rgba(34,183,255,.18);
+      border-color: rgba(255,255,255,.22);
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(34,183,255,.40);
+      box-shadow: 0 18px 56px rgba(0,0,0,.42), 0 0 30px rgba(34,183,255,.22);
+    }
+    .btn:active{transform: translateY(0) scale(.985)}
+    .btn.primary{
+      border-color: rgba(34,183,255,.55);
+      background: linear-gradient(135deg, rgba(34,183,255,.18), rgba(124,77,255,.16));
+    }
+    .btn.ghost{
+      background: transparent;
+      box-shadow:none;
+      border-color: rgba(255,255,255,.14);
+    }
+
+    /* Shine overlay */
+    .btn:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(220px 60px at 20% 20%, rgba(255,255,255,.25), transparent 70%);
+      opacity:.25;
+      pointer-events:none;
+      transition: opacity .25s ease;
+    }
+    .btn:hover:before{opacity:.45}
+
+    /* Ripple */
+    .ripple{
+      position:absolute;
+      border-radius:50%;
+      transform: scale(0);
+      animation: ripple .62s ease-out;
+      background: rgba(255,255,255,.38);
+      pointer-events:none;
+      mix-blend-mode: overlay;
+    }
+    @keyframes ripple{to{transform: scale(3.2); opacity:0}}
+
+    /* ===== NAVBAR ===== */
+    .nav{
+      position:sticky; top:0; z-index:999;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.09);
+      background: rgba(4,6,16,.58);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0; gap:12px;
+      position:relative;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.2px}
+    .logo{
+      width:36px; height:36px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.18);
+      background:
+        radial-gradient(14px 14px at 30% 25%, rgba(255,255,255,.30), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(34,183,255,.45), rgba(124,77,255,.38));
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+    .navlinks{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .navlinks a{
+      color: var(--muted);
+      font-weight:750;
+      font-size:14px;
+      padding:10px 12px;
+      border-radius:999px;
+      transition: color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .navlinks a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      transform: translateY(-1px);
+    }
+    .menuBtn{display:none}
+
+    /* ===== HERO ===== */
+    .hero{
+      position:relative;
+      padding: 56px 0 26px;
+      overflow:hidden;
+    }
+
+    /* Hero animated layers */
+    #particles, #bubbles{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      pointer-events:none;
+    }
+    #particles{opacity:.65}
+    #bubbles{opacity:.60; mix-blend-mode: screen}
+
+    .hero-wrap{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .hero:after{
+  content:"";
+  position:absolute; left:-20%; right:-20%; bottom:-120px;
+  height: 320px;
+  background: radial-gradient(closest-side, rgba(34,183,255,.22), transparent 70%);
+  filter: blur(18px);
+  transform: rotate(-2deg);
+  opacity:.55;
+  animation: wave 6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes wave{
+  0%,100%{ transform: translateY(0) rotate(-2deg); }
+  50%{ transform: translateY(-18px) rotate(2deg); }
+}
+    .hero-left{
+      padding: 24px;
+      border-radius: var(--r2);
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(1000px 520px at 10% 0%, rgba(34,183,255,.22), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(124,77,255,.18), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      box-shadow: 0 45px 130px rgba(0,0,0,.62);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      position:relative;
+      overflow:hidden;
+      min-height: 460px;
+      isolation:isolate;
+    }
+
+    /* Premium glow border animation */
+    .hero-left:before{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius: inherit;
+      background: conic-gradient(from 180deg, rgba(34,183,255,.0), rgba(34,183,255,.25), rgba(124,77,255,.22), rgba(50,255,183,.14), rgba(34,183,255,.0));
+      filter: blur(14px);
+      opacity:.55;
+      animation: spin 10s linear infinite;
+      z-index:-2;
+    }
+    .hero-left:after{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: inherit;
+      background: rgba(4,6,16,.35);
+      z-index:-1;
+    }
+    @keyframes spin{to{transform: rotate(360deg)}}
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size:13px;
+      width:fit-content;
+    }
+    .dot{
+      width:9px; height:9px; border-radius:99px;
+      background: linear-gradient(135deg, var(--good), var(--accent));
+      box-shadow: 0 0 18px rgba(50,255,183,.35);
+    }
+
+    .hero-title{
+      font-size: clamp(36px, 3.8vw, 60px);
+      line-height: 1.03;
+      margin: 10px 0 10px;
+      letter-spacing: -1.0px;
+    }
+    .hero-sub{
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+      max-width: 60ch;
+      margin:0;
+    }
+    .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+    .hero-meta{display:flex; flex-wrap:wrap; gap:10px; margin-top: 18px}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .hero-right{
+      border-radius: var(--r2);
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: 0 32px 100px rgba(0,0,0,.52);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow:hidden;
+      position:relative;
+      padding: 18px;
+      min-height: 460px;
+    }
+
+    /* Hero Images */
+    .hero-media{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .media-card{
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      position:relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform .25s ease, border-color .25s ease;
+      animation: floaty 5.5s ease-in-out infinite;
+    }
+    .media-card:hover{border-color: rgba(34,183,255,.35)}
+    .media-card:after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(600px 180px at 20% 0%, rgba(255,255,255,.20), transparent 60%),
+                  linear-gradient(180deg, transparent, rgba(0,0,0,.55));
+      opacity:.85;
+      pointer-events:none;
+    }
+    .media-card img{
+      width:100%;
+      height: 210px;
+      object-fit: cover;
+      transform: scale(1.06);
+      filter: contrast(1.02) saturate(1.08);
+      transition: transform .4s ease;
+    }
+    .media-card:hover img{transform: scale(1.12)}
+    .media-label{
+      position:absolute; left:14px; bottom:12px; z-index:2;
+      font-weight:850; letter-spacing:.2px;
+      text-shadow: 0 10px 30px rgba(0,0,0,.55);
+    }
+    .kpi-row{display:grid; grid-template-columns: repeat(3,1fr); gap:10px}
+    .kpi{
+      padding:12px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .kpi .num{font-weight:950; font-size:22px; letter-spacing:-.6px}
+    .kpi .lbl{color:var(--muted); font-size:12px; margin-top:4px}
+
+    /* ===== SECTIONS ===== */
+    section{padding: 46px 0}
+    .sec-head{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:14px;
+      margin-bottom: 16px;
+    }
+    .sec-title{
+      font-size: clamp(22px, 2.4vw, 34px);
+      margin:0;
+      letter-spacing: -0.4px;
+    }
+    .sec-desc{margin:0; color:var(--muted); max-width: 70ch; line-height:1.65}
+    .muted{color:var(--muted)}
+
+    /* ===== CARDS + PREMIUM HOVER ===== */
+    .card{
+      border-radius: var(--r);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .card{
+  position:relative;
+  overflow:hidden;
+}
+.card:before{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-60%;
+  width: 60%;
+  height: 180%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+  transform: rotate(18deg);
+  opacity:0;
+  transition: opacity .25s ease;
+}
+.card:hover:before{
+  opacity:1;
+  animation: shine 1.2s ease forwards;
+}
+@keyframes shine{
+  from{ left:-60%; }
+  to{ left:120%; }
+}
+    .lift{
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+      will-change: transform;
+    }
+    .lift:hover{
+      transform: translateY(-7px);
+      border-color: rgba(34,183,255,.35);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+    }
+
+    /* ===== SERVICES ===== */
+    .services{grid-template-columns: repeat(3, 1fr)}
+    .service{padding: 16px}
+    .ico{
+      width:46px; height:46px; border-radius: 16px;
+      border:1px solid rgba(255,255,255,.15);
+      background:
+        radial-gradient(14px 14px at 30% 25%, rgba(255,255,255,.28), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(34,183,255,.22), rgba(124,77,255,.18));
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 18px 48px rgba(0,0,0,.40);
+      font-size:20px;
+    }
+    .service h3{margin:12px 0 6px; font-size:18px}
+    .service p{margin:0; color:var(--muted); line-height:1.65}
+
+    /* ===== PRICING ===== */
+    .pricing{grid-template-columns: repeat(3, 1fr)}
+    .price{padding: 18px; position:relative; overflow:hidden}
+    .price.best{
+      border-color: rgba(34, 255, 244, 0.42);
+      background: linear-gradient(180deg, rgba(34,183,255,.12), rgba(255,255,255,.05));
+    }
+    .tag{
+      position:absolute; top:14px; right:14px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(34,183,255,.35);
+      background: rgba(34,183,255,.10);
+      font-size:12px; color: rgba(255,255,255,.88);
+    }
+    .price h3{margin: 6px 0 6px; font-size:18px}
+    .money{font-size: 36px; font-weight: 980; letter-spacing:-0.9px; margin: 2px 0 10px}
+    .ul{display:grid; gap:8px; margin:0; padding:0; list-style:none; color:var(--muted)}
+    .ul li{display:flex; gap:10px; align-items:flex-start}
+    .tick{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(50,255,183,.12);
+      border:1px solid rgba(50,255,183,.35);
+      display:inline-flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+      margin-top:2px;
+    }
+
+    /* ===== GALLERY ===== */
+    .galleryWrap{grid-template-columns: 1.2fr .8fr}
+    .beforeAfter{padding: 14px; overflow:hidden; position:relative; border-radius: var(--r2)}
+    .ba-stage{
+      position:relative;
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      height: 330px;
+    }
+    .ba-img{position:absolute; inset:0; background-size: cover; background-position: center; filter: contrast(1.02) saturate(1.08)}
+    .ba-after{
+      background-image:
+        linear-gradient(135deg, rgba(34,183,255,.18), rgba(124,77,255,.16)),
+        url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1600&q=75');
+    }
+    .ba-before{
+      background-image:
+        linear-gradient(135deg, rgba(0,0,0,.08), rgba(0,0,0,.10)),
+        url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=75');
+      width:50%;
+      overflow:hidden;
+    }
+    .ba-handle{
+      position:absolute; top:0; bottom:0; left:50%;
+      width:2px;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,.82), transparent);
+      box-shadow: 0 0 24px rgba(34,183,255,.38);
+      pointer-events:none;
+    }
+    .ba-knob{
+      position:absolute; left:50%; top:50%;
+      transform: translate(-50%,-50%);
+      width:46px; height:46px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(4,6,16,.55);
+      backdrop-filter: blur(12px);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 18px 56px rgba(0,0,0,.40);
+      pointer-events:none;
+      font-weight:950;
+    }
+    .ba-range{width: 100%; margin-top: 12px; accent-color: var(--accent)}
+
+    .thumbs{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+    .thumb{
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      cursor:pointer;
+      position:relative;
+      min-height: 120px;
+    }
+    .thumb img{width:100%; height:100%; object-fit:cover; transform: scale(1.06); transition: transform .3s ease}
+    .thumb:hover img{transform: scale(1.14)}
+    .thumb:hover{
+  border-color: rgba(34,183,255,.35);
+  box-shadow: 0 18px 60px rgba(0,0,0,.45);
+}
+    .thumb:after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.60));
+      opacity:.9;
+      pointer-events:none;
+    }
+    .thumb span{
+      position:absolute; left:12px; bottom:10px; z-index:2;
+      font-size:13px; color: rgba(255,255,255,.92); font-weight:850;
+    }
+
+    /* ===== WHY ===== */
+    .why{grid-template-columns: repeat(4, 1fr)}
+    .why .item{padding:14px}
+
+    /* ===== REVIEWS ===== */
+    .reviews{position:relative; overflow:hidden; border-radius: var(--r2); padding: 16px}
+    .track{
+      display:flex; gap:14px;
+      transition: transform .55s cubic-bezier(.2,.85,.2,1);
+      will-change: transform;
+    }
+    .review{min-width: calc(33.333% - 10px); padding: 16px}
+    .review p{margin:10px 0 0; color:var(--muted); line-height:1.7}
+    .who{display:flex; align-items:center; gap:10px}
+    .avatar{
+      width:38px; height:38px; border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(34,183,255,.22), rgba(124,77,255,.18));
+    }
+    .stars{color: rgba(255,255,255,.86); font-size: 13px}
+    .carouselBtns{display:flex; gap:10px; justify-content:flex-end; margin-top: 12px}
+
+    /* ===== BOOKING ===== */
+    form{display:grid; gap:12px}
+    .form-grid{grid-template-columns: repeat(2, 1fr)}
+    .field{display:grid; gap:7px}
+    label{font-size:13px; color:var(--muted); font-weight:750}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(34,183,255,.48);
+      background: rgba(255,255,255,.06);
+    }
+    textarea{min-height: 92px; resize: vertical}
+    .success{
+      display:none;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(50,255,183,.38);
+      background: rgba(50,255,183,.10);
+      color: rgba(255,255,255,.88);
+      font-weight:800;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact{grid-template-columns: 1.05fr .95fr}
+    .map{
+      border-radius: var(--r2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      min-height: 320px;
+      background: rgba(255,255,255,.04);
+    }
+    .map iframe{width:100%; height:100%; border:0}
+    .list{display:grid; gap:10px; padding:14px}
+    .row{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .row b{display:block}
+    .row small{color:var(--muted); line-height:1.5}
+
+    /* ===== FOOTER ===== */
+    footer{
+      padding: 22px 0 36px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.12);
+    }
+    .foot{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; color: var(--muted); font-size: 13px}
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float{
+      position:fixed; right: 16px; bottom: 16px; z-index: 9999;
+      display:flex; gap:10px; align-items:center;
+    }
+    .wa-chip{
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(4,6,16,.55);
+      backdrop-filter: blur(14px);
+      color: var(--muted);
+      font-size: 13px;
+      display:none;
+    }
+    .wa-btn{
+      width:56px; height:56px;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(50,255,183,.18), rgba(34,183,255,.18));
+      box-shadow: 0 28px 80px rgba(0,0,0,.58);
+      display:flex; align-items:center; justify-content:center;
+      transition: transform .2s ease;
+    }
+    .wa-btn:hover{transform: translateY(-3px)}
+
+    /* ===== MODAL ===== */
+    .modal{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.66);
+      backdrop-filter: blur(10px);
+      display:none; align-items:center; justify-content:center;
+      z-index: 99999; padding: 18px;
+    }
+    .modal.open{display:flex}
+    .modal-card{
+      width: min(980px, 100%);
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(10,12,22,.75);
+      box-shadow: 0 70px 180px rgba(0,0,0,.78);
+      overflow:hidden; position:relative;
+    }
+    .modal-top{
+      display:flex; justify-content:space-between; align-items:center;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      color: var(--muted); font-size: 13px;
+    }
+    .close{
+      width:40px; height:40px; border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .close:hover{transform: translateY(-1px); border-color: rgba(34,183,255,.35)}
+    .modal-img{width:100%; height: min(72vh, 640px); object-fit: cover; display:block}
+
+    /* ===== REVEAL ===== */
+    .reveal{opacity:0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease}
+    .reveal.show{opacity:1; transform: translateY(0)}
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 980px){
+      .hero-wrap{grid-template-columns: 1fr}
+      .hero-left, .hero-right{min-height:auto}
+      .services{grid-template-columns: 1fr}
+      .pricing{grid-template-columns: 1fr}
+      .galleryWrap{grid-template-columns: 1fr}
+      .why{grid-template-columns: 1fr 1fr}
+      .review{min-width: calc(50% - 8px)}
+      .contact{grid-template-columns: 1fr}
+      .form-grid{grid-template-columns: 1fr}
+      .navlinks{display:none}
+      .menuBtn{display:inline-flex}
+      .wa-chip{display:block}
+      .kpi-row{grid-template-columns: 1fr 1fr 1fr}
+      .media-card img{height: 200px}
+    }
+    @media (max-width: 560px){
+      .why{grid-template-columns: 1fr}
+      .review{min-width: 100%}
+      .kpi-row{grid-template-columns: 1fr}
+      .media-card img{height: 185px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress" id="progress"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">
+        <img src="logo.png" class="logo" alt="">
+        <div>
+          <div style="font-size:15px; line-height:1; font-weight:950">Aman Car Washing</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px">Jamai Road, Malikpur Tiraha</div>
+        </div>
+      </a>
+
+      <nav class="navlinks" id="navlinks">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#prices">Prices</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div style="display:flex; gap:10px; align-items:center">
+        <button class="btn ghost menuBtn ripple-btn" id="menuBtn" aria-label="Open menu">☰</button>
+        <a class="btn primary ripple-btn" href="#booking">Book Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home" class="hero">
+    <canvas id="particles"></canvas>
+    <canvas id="bubbles"></canvas>
+
+    <div class="container hero-wrap">
+      <!-- LEFT -->
+      <div class="hero-left reveal">
+        <div class="badge"><span class="dot"></span> Fast • Affordable • Shine Guaranteed</div>
+
+        <h1 class="hero-title">Premium Car Wash in Malikpur</h1>
+        <p class="hero-sub">
+          Bike ₹50 • Car ₹100 • Tractor ₹150 — clean finish, quick dry and premium shine.
+          Visit us at <b>Jamai Road, Malikpur Tiraha</b>.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary ripple-btn" id="waHero" href="#">Book on WhatsApp</a>
+          <a class="btn ripple-btn" id="callHero" href="#">Call Now</a>
+          <a class="btn ghost ripple-btn" href="#prices">View Prices →</a>
+        </div>
+
+        <div class="hero-meta">
+          <span class="pill">⚡ Same-day service</span>
+          <span class="pill">✨ Clean shine</span>
+          <span class="pill">📍 Easy location</span>
+          <span class="pill">💬 WhatsApp booking</span>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="hero-right reveal">
+        <div class="hero-media">
+          <div class="media-card lift" data-tilt>
+            <!-- CAR image -->
+            <img
+              src=car.jpg
+              alt="Car wash premium shine">
+            <div class="media-label">Car Wash • Premium Shine</div>
+          </div>
+
+          <div class="media-card lift" data-tilt>
+            <!-- BIKE image -->
+            <img
+              src="https://images.unsplash.com/photo-1558981001-5864b3250a69?auto=format&fit=crop&w=1600&q=75"
+              alt="Bike wash">
+            <div class="media-label">Bike Wash • Clean Finish</div>
+          </div>
+
+          <div class="kpi-row">
+            <div class="kpi card">
+              <div class="num">₹50</div><div class="lbl">Bike Wash</div>
+            </div>
+            <div class="kpi card">
+              <div class="num">₹100</div><div class="lbl">Car Wash</div>
+            </div>
+            <div class="kpi card">
+              <div class="num">₹150</div><div class="lbl">Tractor Wash</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div>
+          <h2 class="sec-title">Services</h2>
+          <p class="sec-desc">Premium cleaning with smooth finish. Simple pricing, fast service.</p>
+        </div>
+      </div>
+
+      <div class="grid services">
+        <article class="card service lift reveal" data-tilt>
+          <div class="ico">🚗</div>
+          <h3>Car Wash</h3>
+          <p>Exterior wash + quick dry + shine finish. Perfect for daily clean look.</p>
+        </article>
+
+        <article class="card service lift reveal" data-tilt>
+          <div class="ico">🏍️</div>
+          <h3>Bike Wash</h3>
+          <p>Fast bike wash with neat cleaning for a fresh and shiny ride.</p>
+        </article>
+
+        <article class="card service lift reveal" data-tilt>
+          <div class="ico">🚜</div>
+          <h3>Tractor Wash</h3>
+          <p>Heavy vehicle wash with strong cleaning for dust & tough dirt removal.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="prices">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div>
+          <h2 class="sec-title">Pricing</h2>
+          <p class="sec-desc"> </p>
+        </div>
+      </div>
+
+      <div class="grid pricing">
+        <article class="card price lift reveal" data-tilt>
+          <h3>Bike Wash</h3>
+          <div class="money">₹50</div>
+          <ul class="ul">
+            <li><span class="tick">✓</span><span>Includes: exterior wash</span></li>
+            <li><span class="tick">✓</span><span>Quick dry</span></li>
+            <li><span class="tick">✓</span><span>Shine finish</span></li>
+          </ul>
+          <div style="margin-top:14px"><a class="btn primary ripple-btn" href="#booking">Book Bike Wash</a></div>
+        </article>
+
+        <article class="card price best lift reveal" data-tilt>
+          <span class="tag">Best Value</span>
+          <h3>Car Wash</h3>
+          <div class="money">₹100</div>
+          <ul class="ul">
+            <li><span class="tick">✓</span><span>Includes: exterior wash</span></li>
+            <li><span class="tick">✓</span><span>Quick dry</span></li>
+            <li><span class="tick">✓</span><span>Premium shine finish</span></li>
+          </ul>
+          <div style="margin-top:14px"><a class="btn primary ripple-btn" href="#booking">Book Car Wash</a></div>
+        </article>
+
+        <article class="card price lift reveal" data-tilt>
+          <h3>Tractor Wash</h3>
+          <div class="money">₹150</div>
+          <ul class="ul">
+            <li><span class="tick">✓</span><span>Includes: exterior wash</span></li>
+            <li><span class="tick">✓</span><span>Quick dry</span></li>
+            <li><span class="tick">✓</span><span>Clean finish (heavy-duty)</span></li>
+          </ul>
+          <div style="margin-top:14px"><a class="btn primary ripple-btn" href="#booking">Book Tractor Wash</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div>
+          <h2 class="sec-title">Gallery</h2>
+          <p class="sec-desc">Before/After slider + click images to open lightbox.</p>
+        </div>
+      </div>
+
+      <div class="grid galleryWrap">
+        <div class="card beforeAfter reveal">
+          <div class="ba-stage" aria-label="Before after slider">
+            <div class="ba-img ba-after"></div>
+            <div class="ba-img ba-before" id="baBefore"></div>
+            <div class="ba-handle" id="baHandle"></div>
+            <div class="ba-knob" id="baKnob">⇆</div>
+          </div>
+          <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Before after control" />
+          <div class="muted" style="font-size:13px; margin-top:8px">Drag the slider to compare.</div>
+        </div>
+
+        <div class="thumbs">
+          <div class="thumb reveal lift" data-full=bike.jpg>
+            <img alt="Foam wash" src=bike.jpg />
+            <span>Foam Wash</span>
+          </div>
+          
+          <div class="thumb reveal lift" data-full=3.jpg>
+            <img alt="Before wash" src=3.jpg />
+            <span>Before/After</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section>
+    <div class="container">
+      <div class="sec-head reveal">
+        <div>
+          <h2 class="sec-title">Why Choose Us</h2>
+          <p class="sec-desc">Simple, fast, and clean — right at Malikpur Tiraha.</p>
+        </div>
+      </div>
+
+      <div class="grid why">
+        <div class="card item lift reveal" data-tilt>
+          <div class="ico">⚡</div>
+          <h3 style="margin:12px 0 6px">Fast Service</h3>
+          <p class="muted" style="margin:0; line-height:1.65">Quick wash + quick dry so you save time.</p>
+        </div>
+        <div class="card item lift reveal" data-tilt>
+          <div class="ico">💸</div>
+          <h3 style="margin:12px 0 6px">Affordable</h3>
+          <p class="muted" style="margin:0; line-height:1.65">Best pricing for bike, car, and tractor wash.</p>
+        </div>
+        <div class="card item lift reveal" data-tilt>
+          <div class="ico">✨</div>
+          <h3 style="margin:12px 0 6px">Clean Finish</h3>
+          <p class="muted" style="margin:0; line-height:1.65">Neat cleaning with shine finish.</p>
+        </div>
+        <div class="card item lift reveal" data-tilt>
+          <div class="ico">📍</div>
+          <h3 style="margin:12px 0 6px">Easy Location</h3>
+          <p class="muted" style="margin:0; line-height:1.65">Jamai Road, Malikpur Tiraha — easy to reach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div>
+          <h2 class="sec-title">Customer Reviews</h2>
+          <p class="sec-desc"></p>
+        </div>
+      </div>
+
+      <div class="card reviews reveal">
+        <div class="track" id="track">
+          <article class="card review lift" data-tilt>
+            <div class="who"><div class="avatar"></div><div><b>Rohit</b><div class="stars">★★★★★</div></div></div>
+            <p>Car wash was quick and the shine looked premium. Value for money!</p>
+          </article>
+          <article class="card review lift" data-tilt>
+            <div class="who"><div class="avatar"></div><div><b>Neha</b><div class="stars">★★★★★</div></div></div>
+            <p>Very clean finish and polite service. Location is easy to find.</p>
+          </article>
+          <article class="card review lift" data-tilt>
+            <div class="who"><div class="avatar"></div><div><b>Ajay</b><div class="stars">★★★★★</div></div></div>
+            <p>Bike wash at ₹50 is best. Fast and nice detailing.</p>
+          </article>
+          <article class="card review lift" data-tilt>
+            <div class="who"><div class="avatar"></div><div><b>Sunil</b><div class="stars">★★★★★</div></div></div>
+            <p>Tractor wash done properly. Strong cleaning, good staff.</p>
+          </article>
+        </div>
+
+        <div class="carouselBtns">
+          <button class="btn ripple-btn" id="prev">← Prev</button>
+          <button class="btn primary ripple-btn" id="next">Next →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div>
+          <h2 class="sec-title">Book Your Wash</h2>
+          <p class="sec-desc">Fill the form </p>
+        </div>
+      </div>
+
+      <div class="card reveal" style="padding:16px">
+        <div class="success" id="success">✅ Booking message prepared! WhatsApp opening…</div>
+
+        <form id="bookingForm">
+          <div class="grid form-grid">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" placeholder="Your phone number" inputmode="numeric" required />
+            </div>
+
+            <div class="field">
+              <label for="vehicle">Vehicle</label>
+              <select id="vehicle" name="vehicle" required>
+                <option value="">Select vehicle</option>
+                <option>Bike</option>
+                <option>Car</option>
+                <option>Tractor</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="service">Service</label>
+              <select id="service" name="service" required>
+                <option value="">Select service</option>
+                <option>Bike Wash (₹50)</option>
+                <option>Car Wash (₹100)</option>
+                <option>Tractor Wash (₹150)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="date">Date</label>
+              <input id="date" name="date" type="date" required />
+            </div>
+            <div class="field">
+              <label for="time">Time</label>
+              <input id="time" name="time" type="time" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="note">Note (optional)</label>
+            <textarea id="note" name="note" placeholder="Any special request?"></textarea>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn primary ripple-btn" type="submit">Send Booking on WhatsApp</button>
+            <a class="btn ripple-btn" id="callBooking" href="#">Call Now</a>
+          </div>
+        </form>
+
+        <div class="muted" style="font-size:13px; margin-top:10px">
+          Number set: <b>+91 9012479411</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div>
+          <h2 class="sec-title">Contact</h2>
+          <p class="sec-desc">Address, hours, map + instant WhatsApp booking.</p>
+        </div>
+      </div>
+
+      <div class="grid contact">
+        <div class="card map reveal">
+          <iframe
+            title="Google map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=27.1504007,79.3761386&output=embed">
+          </iframe>
+        </div>
+
+        <div class="card list reveal">
+          <div class="row">
+            <div class="ico" style="width:40px;height:40px;border-radius:14px">📍</div>
+            <div>
+              <b>Address</b>
+              <small>Jamai Road, Malikpur Tiraha</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ico" style="width:40px;height:40px;border-radius:14px">🕒</div>
+            <div>
+              <b>Opening Hours</b>
+              <small>Mon–Sun: 8:00 AM – 8:00 PM (edit anytime)</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ico" style="width:40px;height:40px;border-radius:14px">📞</div>
+            <div>
+              <b>Call / WhatsApp</b>
+              <small>
+                <a id="callText" href="#">Call: +91 9012479411</a> •
+                <a id="waText" href="#">WhatsApp Booking</a>
+              </small>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; padding:2px">
+            <a class="btn primary ripple-btn" id="waContact" href="#">Book on WhatsApp</a>
+            <a class="btn ripple-btn" id="callContact" href="#">Call Now</a>
+          </div>
+
+          <div class="muted" style="font-size:13px; padding:2px">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot">
+      <div>© <span id="year"></span> Aman Car Washing • Malikpur Tiraha</div>
+      <div class="muted"> Give a chance</div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating -->
+  <div class="wa-float">
+    <div class="wa-chip">Book on WhatsApp</div>
+    <a class="wa-btn" id="waFloat" href="#" aria-label="WhatsApp">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <path d="M20.5 11.8c0 4.8-3.9 8.7-8.7 8.7-1.5 0-2.9-.4-4.2-1l-3.1.9.9-3c-.7-1.3-1.1-2.8-1.1-4.3 0-4.8 3.9-8.7 8.7-8.7 4.8 0 8.5 3.7 8.5 8.4Z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M9.4 8.9c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.2 0 .4-.1.6l-.4.5c-.1.1-.2.3 0 .6.2.4.8 1.2 1.6 1.8.8.6 1.5.8 1.9.9.3.1.5 0 .6-.1l.6-.6c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.3.3.6-.1.5-.4 1.2-1 1.5-.5.3-1.2.4-2.7-.1-1.4-.5-3.1-1.8-4.2-3.3-1.1-1.5-1.5-2.8-1.5-3.8 0-.8.2-1.3.5-1.8Z" fill="currentColor" opacity=".9"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-top">
+        <div id="modalTitle">Gallery</div>
+        <div class="close" id="closeModal" aria-label="Close">✕</div>
+      </div>
+      <img class="modal-img" id="modalImg" alt="Gallery image" />
+    </div>
+  </div>
+
+  <script>
+    // ✅ YOUR NUMBER (already set)
+    const WA_NUMBER = "919012479411";
+    const CALL_NUMBER = "+919012479411";
+
+    function waLink(text){
+      return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+    }
+
+    // Set up links
+    const baseText = `Hello Aman Car Washing! I want to book a wash.\nLocation: Jamai Road, Malikpur Tiraha`;
+    ["waHero","waContact","waText","waFloat"].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.href = waLink(baseText);
+    });
+    ["callHero","callContact","callText","callBooking"].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.href = `tel:${CALL_NUMBER}`;
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const navlinks = document.getElementById("navlinks");
+    menuBtn?.addEventListener("click", () => {
+      const show = navlinks.style.display === "flex";
+      navlinks.style.display = show ? "none" : "flex";
+      navlinks.style.flexDirection = "column";
+      navlinks.style.position = "absolute";
+      navlinks.style.right = "16px";
+      navlinks.style.top = "64px";
+      navlinks.style.padding = "10px";
+      navlinks.style.border = "1px solid rgba(255,255,255,.10)";
+      navlinks.style.borderRadius = "18px";
+      navlinks.style.background = "rgba(4,6,16,.72)";
+      navlinks.style.backdropFilter = "blur(14px)";
+      navlinks.style.width = "220px";
+    });
+
+    // Progress bar
+    const progress = document.getElementById("progress");
+    function updateProgress(){
+      const s = window.scrollY;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (h > 0 ? (s / h) * 100 : 0) + "%";
+    }
+    window.addEventListener("scroll", updateProgress, {passive:true});
+    updateProgress();
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add("show");
+      });
+    }, {threshold: .12});
+    reveals.forEach(el => io.observe(el));
+
+    // Button ripple
+    function addRipple(e){
+      const btn = e.currentTarget;
+      const rect = btn.getBoundingClientRect();
+      const r = document.createElement("span");
+      r.className = "ripple";
+      const size = Math.max(rect.width, rect.height);
+      r.style.width = r.style.height = size + "px";
+      r.style.left = (e.clientX - rect.left - size/2) + "px";
+      r.style.top  = (e.clientY - rect.top  - size/2) + "px";
+      btn.appendChild(r);
+      setTimeout(()=> r.remove(), 650);
+    }
+    document.querySelectorAll(".ripple-btn").forEach(b => b.addEventListener("click", addRipple));
+
+    // 3D Tilt for premium feel
+    const tiltEls = document.querySelectorAll("[data-tilt]");
+    function tiltMove(e){
+      const el = e.currentTarget;
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+      const rotY = (x - 0.5) * 10;    // -5..5
+      const rotX = (0.5 - y) * 10;    // -5..5
+      el.style.transform = `translateY(-6px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    }
+    function tiltReset(e){
+      const el = e.currentTarget;
+      el.style.transform = "";
+    }
+    tiltEls.forEach(el=>{
+      el.addEventListener("mousemove", tiltMove);
+      el.addEventListener("mouseleave", tiltReset);
+    });
+
+    // Before/After slider
+    const baRange = document.getElementById("baRange");
+    const baBefore = document.getElementById("baBefore");
+    const baHandle = document.getElementById("baHandle");
+    const baKnob = document.getElementById("baKnob");
+    function setBA(val){
+      baBefore.style.width = val + "%";
+      baHandle.style.left = val + "%";
+      baKnob.style.left = val + "%";
+    }
+    baRange.addEventListener("input", (e)=> setBA(e.target.value));
+    setBA(50);
+
+    // Lightbox modal
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const closeModal = document.getElementById("closeModal");
+
+    function openModal(src, title){
+      modalImg.src = src;
+      modalTitle.textContent = title || "Gallery";
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden","false");
+    }
+    function hideModal(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+      modalImg.src = "";
+    }
+    document.querySelectorAll(".thumb").forEach(t=>{
+      t.addEventListener("click", ()=>{
+        openModal(t.getAttribute("data-full"), t.querySelector("span")?.textContent || "Gallery");
+      });
+    });
+    closeModal.addEventListener("click", hideModal);
+    modal.addEventListener("click", (e)=>{ if(e.target === modal) hideModal(); });
+    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") hideModal(); });
+
+    // Reviews carousel
+    const track = document.getElementById("track");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    let idx = 0;
+
+    function cardsPerView(){
+      if(window.innerWidth <= 560) return 1;
+      if(window.innerWidth <= 980) return 2;
+      return 3;
+    }
+    function maxIdx(){
+      return Math.max(0, track.children.length - cardsPerView());
+    }
+    function slideTo(i){
+      idx = Math.max(0, Math.min(i, maxIdx()));
+      const card = track.children[0];
+      const gap = 14;
+      const w = card.getBoundingClientRect().width + gap;
+      track.style.transform = `translateX(${-idx * w}px)`;
+    }
+    prev.addEventListener("click", ()=> slideTo(idx - 1));
+    next.addEventListener("click", ()=> slideTo(idx + 1));
+    window.addEventListener("resize", ()=> slideTo(idx));
+    slideTo(0);
+    setInterval(()=> slideTo(idx + 1 > maxIdx() ? 0 : idx + 1), 4200);
+
+    // Booking -> WhatsApp
+    const form = document.getElementById("bookingForm");
+    const success = document.getElementById("success");
+    const dateInput = document.getElementById("date");
+
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth()+1).padStart(2,"0");
+    const dd = String(today.getDate()).padStart(2,"0");
+    dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+    form.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const msg =
+`Hello Aman Car Washing!
+I want to book a wash.
+
+Name: ${data.get("name")}
+Phone: ${data.get("phone")}
+Vehicle: ${data.get("vehicle")}
+Service: ${data.get("service")}
+Date: ${data.get("date")}
+Time: ${data.get("time")}
+Note: ${data.get("note") || ""}
+
+Location: Jamai Road, Malikpur Tiraha`;
+
+      success.style.display = "block";
+      success.scrollIntoView({behavior:"smooth", block:"nearest"});
+      window.open(waLink(msg), "_blank", "noopener,noreferrer");
+      setTimeout(()=> success.style.display="none", 6000);
+    });
+
+    // ===== Premium Particles (hero) =====
+    function setupCanvas(id){
+      const c = document.getElementById(id);
+      const ctx = c.getContext("2d");
+      let W=0,H=0,dpr=1;
+      const resize = ()=>{
+        dpr = window.devicePixelRatio || 1;
+        W = c.clientWidth; H = c.clientHeight;
+        c.width = Math.floor(W*dpr); c.height = Math.floor(H*dpr);
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      };
+      resize();
+      window.addEventListener("resize", resize);
+      return {c,ctx,get W(){return W},get H(){return H},resize};
+    }
+
+    // Particles layer
+    const P = setupCanvas("particles");
+    const particles = [];
+    const PCOUNT = 70;
+
+    const rand = (a,b)=>Math.random()*(b-a)+a;
+
+    function initParticles(){
+      particles.length=0;
+      for(let i=0;i<PCOUNT;i++){
+        particles.push({
+          x: rand(0,P.W),
+          y: rand(0,P.H),
+          r: rand(1,2.4),
+          vx: rand(-0.25,0.25),
+          vy: rand(-0.10,0.18),
+          a: rand(0.25,0.55)
+        });
+      }
+    }
+    initParticles();
+    window.addEventListener("resize", initParticles);
+
+    function drawParticles(){
+      const ctx = P.ctx;
+      ctx.clearRect(0,0,P.W,P.H);
+
+      // soft glow wash
+      const g = ctx.createRadialGradient(P.W*0.3, P.H*0.2, 0, P.W*0.3, P.H*0.2, Math.max(P.W,P.H)*0.7);
+      g.addColorStop(0, "rgba(34,183,255,0.10)");
+      g.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = g; ctx.fillRect(0,0,P.W,P.H);
+
+      for(const p of particles){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x<-20) p.x=P.W+20;
+        if(p.x>P.W+20) p.x=-20;
+        if(p.y<-20) p.y=P.H+20;
+        if(p.y>P.H+20) p.y=-20;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    // Bubble/water layer
+    const B = setupCanvas("bubbles");
+    const bubbles = [];
+    const BCOUNT = 46;
+
+    function initBubbles(){
+      bubbles.length=0;
+      for(let i=0;i<BCOUNT;i++){
+        bubbles.push({
+          x: rand(0,B.W), y: rand(0,B.H),
+          r: rand(4,14),
+          vx: rand(-0.15,0.15),
+          vy: rand(-0.55,-0.12),
+          a: rand(0.05,0.18),
+          hue: rand(190,245)
+        });
+      }
+    }
+    initBubbles();
+    window.addEventListener("resize", initBubbles);
+
+    function drawBubbles(){
+      const ctx = B.ctx;
+      ctx.clearRect(0,0,B.W,B.H);
+      for(const b of bubbles){
+        b.x += b.vx; b.y += b.vy;
+        if(b.y + b.r < -10){ b.y = B.H + rand(10,120); b.x = rand(0,B.W); }
+        if(b.x < -20) b.x = B.W + 20;
+        if(b.x > B.W + 20) b.x = -20;
+
+        ctx.beginPath();
+        ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
+        ctx.fillStyle = `hsla(${b.hue},100%,65%,${b.a})`;
+        ctx.fill();
+
+        // highlight
+        ctx.beginPath();
+        ctx.arc(b.x - b.r*0.25, b.y - b.r*0.25, Math.max(1.6, b.r*0.35), 0, Math.PI*2);
+        ctx.fillStyle = `rgba(255,255,255,${Math.min(.18, b.a + .06)})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(drawBubbles);
+    }
+    drawBubbles();
+  </script>
+</body>
+</html>
